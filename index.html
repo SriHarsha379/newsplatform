@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dhaatri Media Broadcast</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ================= ROOT ================= */
+:root{
+  --red:#e53935;
+  --dark:#0b0f14;
+  --dark2:#101722;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+}
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  background: radial-gradient(circle at top left,#1a1f2c,#07090d 60%);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:20px 70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:linear-gradient(to bottom,rgba(0,0,0,.6));
+  z-index:100;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-icon{
+  width:42px;
+  height:42px;
+  background:var(--red);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:20px;
+  color:#fff;
+}
+
+.logo-text{
+  line-height:1.1;
+}
+
+.logo-text strong{
+  font-size:18px;
+  display:block;
+}
+
+.logo-text span{
+  font-size:13px;
+  color:#9ca3af;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  color:#cbd5e1;
+  text-decoration:none;
+  font-size:14px;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.cta{
+  background:var(--red);
+  padding:10px 18px;
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:160px 20px 60px;
+  position:relative;
+}
+
+/* grid overlay */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+.hero-content{
+  max-width:1000px;
+  position:relative;
+  z-index:2;
+  animation:fadeUp 1.2s ease forwards;
+}
+
+/* badge */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 16px;
+  border-radius:30px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  font-size:14px;
+  color:#cbd5e1;
+  margin-bottom:30px;
+}
+
+.badge span{
+  width:8px;
+  height:8px;
+  background:var(--red);
+  border-radius:50%;
+}
+
+/* heading */
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:64px;
+  line-height:1.15;
+  margin-bottom:25px;
+}
+
+h1 .red{
+  color:var(--red);
+}
+
+/* subtitle */
+.subtitle{
+  font-size:18px;
+  color:#9ca3af;
+  max-width:780px;
+  margin:0 auto 45px;
+  line-height:1.6;
+}
+
+/* buttons */
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:16px 28px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:500;
+  font-size:15px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  transition:.3s;
+}
+
+.btn-primary{
+  background:var(--red);
+  color:#fff;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+}
+
+/* ================= STATS ================= */
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:80px;
+  margin-top:80px;
+  flex-wrap:wrap;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat h2{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  color:#f3d6a4;
+}
+
+.stat p{
+  font-size:14px;
+  color:#9ca3af;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .navbar{
+    padding:16px 20px;
+  }
+  .nav-links{
+    display:none;
+  }
+  h1{
+    font-size:44px;
+  }
+}
+
+
+/* ================= ABOUT US ================= */
+.about{
+  padding:120px 80px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:70px;
+  background:linear-gradient(to right,#07090d,#0b0f14);
+}
+
+.about small{
+  color:var(--red);
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+.about h2{
+  font-family:'Playfair Display',serif;
+  font-size:52px;
+  margin:18px 0 28px;
+}
+
+.about h2 span{
+  color:#d6a96c;
+}
+
+.about p{
+  color:#9ca3af;
+  line-height:1.8;
+  font-size:16px;
+  margin-bottom:20px;
+}
+
+/* feature cards */
+.features{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+}
+
+.card{
+  background:linear-gradient(145deg,#0e141c,#0a0f15);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:28px;
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(229,57,53,.6);
+}
+
+.icon{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  background:rgba(229,57,53,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:18px;
+  font-size:20px;
+  color:var(--red);
+}
+
+.card h4{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:14px;
+  margin:0;
+}
+
+/* vision mission */
+.vm{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+  margin-top:40px;
+}
+
+/* scroll animation */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* responsive */
+@media(max-width:1000px){
+  .about{
+    grid-template-columns:1fr;
+    padding:80px 20px;
+  }
+  .features,.vm{
+    grid-template-columns:1fr;
+  }
+  .about h2{
+    font-size:40px;
+  }
+}
+
+
+
+/* ================= NEWS PLATFORMS ================= */
+.news-platforms{
+  padding:120px 80px;
+  background:radial-gradient(circle at top right,#1a0f17,#07090d 60%);
+  text-align:center;
+}
+
+.news-platforms small{
+  color:var(--red);
+  letter-spacing:1px;
+  font-weight:600;
+}
+
+.news-platforms h2{
+  font-family:'Playfair Display',serif;
+  font-size:54px;
+  margin:20px 0;
+}
+
+.news-platforms .intro{
+  max-width:760px;
+  margin:0 auto 70px;
+  color:#9ca3af;
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* platform cards */
+.platform-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.platform-card{
+  background:linear-gradient(145deg,#0e141c,#0a0f15);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  padding:36px;
+  text-align:left;
+  transition:.4s;
+}
+
+.platform-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(229,57,53,.6);
+}
+
+.platform-icon{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:rgba(229,57,53,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  color:var(--red);
+  margin-bottom:22px;
+}
+
+.platform-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  margin-bottom:6px;
+}
+
+.platform-tag{
+  color:var(--red);
+  font-size:14px;
+  margin-bottom:16px;
+}
+
+.platform-card p{
+  font-size:15px;
+  color:#9ca3af;
+  line-height:1.7;
+  margin-bottom:22px;
+}
+
+/* list */
+.platform-card ul{
+  list-style:none;
+  margin-bottom:26px;
+}
+
+.platform-card ul li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  color:#cbd5e1;
+  margin-bottom:10px;
+}
+
+.platform-card ul li::before{
+  content:"✔";
+  color:var(--red);
+  font-size:13px;
+}
+
+/* learn more */
+.learn-more{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  font-size:14px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.learn-more span{
+  font-size:16px;
+}
+
+/* responsive */
+@media(max-width:1100px){
+  .platform-grid{
+    grid-template-columns:1fr;
+  }
+  .news-platforms{
+    padding:80px 20px;
+  }
+  .news-platforms h2{
+    font-size:42px;
+  }
+}
+
+
+
+/* ================= OUR SERVICES ================= */
+.services{
+  padding:120px 80px;
+  background:radial-gradient(circle at center,#0d1118,#07090d 70%);
+  text-align:center;
+}
+
+.services small{
+  color:var(--red);
+  letter-spacing:1px;
+  font-weight:600;
+}
+
+.services h2{
+  font-family:'Playfair Display',serif;
+  font-size:54px;
+  margin:20px 0;
+}
+
+.services h2 span{
+  color:var(--red);
+}
+
+.services .intro{
+  max-width:760px;
+  margin:0 auto 80px;
+  color:#9ca3af;
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* service cards */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-bottom:60px;
+}
+
+.service-card{
+  background:linear-gradient(145deg,#0e141c,#0a0f15);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  padding:36px;
+  text-align:left;
+  transition:.4s;
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(214,169,108,.6);
+}
+
+.service-icon{
+  width:50px;
+  height:50px;
+  border-radius:14px;
+  background:rgba(214,169,108,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  color:#d6a96c;
+  margin-bottom:22px;
+}
+
+.service-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.service-card p{
+  color:#9ca3af;
+  font-size:15px;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+
+.service-card ul{
+  list-style:none;
+}
+
+.service-card ul li{
+  font-size:14px;
+  color:#cbd5e1;
+  margin-bottom:10px;
+  position:relative;
+  padding-left:18px;
+}
+
+.service-card ul li::before{
+  content:"•";
+  color:#d6a96c;
+  position:absolute;
+  left:0;
+}
+
+/* more services box */
+.more-services{
+  background:linear-gradient(145deg,#121826,#0c1018);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:24px;
+  padding:36px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:60px;
+}
+
+.more-services h4{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  margin-bottom:6px;
+}
+
+.more-services p{
+  color:#9ca3af;
+  font-size:14px;
+}
+
+.tags{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  background:#0b0f14;
+  border:1px solid rgba(255,255,255,.1);
+  padding:10px 16px;
+  border-radius:12px;
+  font-size:13px;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.tag span{
+  color:var(--red);
+}
+
+/* CTA */
+.services-cta{
+  margin-top:30px;
+}
+
+.services-cta a{
+  background:var(--red);
+  color:#fff;
+  padding:16px 32px;
+  border-radius:14px;
+  font-size:15px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* responsive */
+@media(max-width:1100px){
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+  .services{
+    padding:80px 20px;
+  }
+  .services h2{
+    font-size:42px;
+  }
+}
+
+
+
+/* ================= INDUSTRIES WE SERVE ================= */
+.industries{
+  padding:120px 80px;
+  background:radial-gradient(circle at top,#0c1118,#07090d 70%);
+  text-align:center;
+}
+
+.industries small{
+  color:var(--red);
+  letter-spacing:1.2px;
+  font-weight:600;
+}
+
+.industries h2{
+  font-family:'Playfair Display',serif;
+  font-size:54px;
+  margin:18px 0;
+}
+
+.industries h2 span{
+  color:#d6a96c;
+}
+
+.industries .subtitle{
+  max-width:760px;
+  margin:0 auto 80px;
+  color:#9ca3af;
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* grid */
+.industries-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+}
+
+/* card */
+.industry-card{
+  background:linear-gradient(145deg,#0e141c,#0a0f15);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  padding:46px 28px;
+  transition:.4s;
+}
+
+.industry-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(214,169,108,.5);
+}
+
+/* icon */
+.industry-icon{
+  width:58px;
+  height:58px;
+  margin:0 auto 22px;
+  border-radius:16px;
+  background:rgba(220,38,38,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  color:#ef4444;
+}
+
+.industry-card h4{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.industry-card p{
+  color:#94a3b8;
+  font-size:14px;
+}
+
+/* responsive */
+@media(max-width:1100px){
+  .industries-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .industries{
+    padding:80px 20px;
+  }
+  .industries-grid{
+    grid-template-columns:1fr;
+  }
+  .industries h2{
+    font-size:40px;
+  }
+}
+
+
+/* ================= OUR PROCESS ================= */
+.process-section{
+  padding:120px 80px;
+  background:radial-gradient(circle at top,#161a1f,#0b0e12);
+  color:#fff;
+  text-align:center;
+}
+
+.process-header{
+  max-width:800px;
+  margin:0 auto 80px;
+}
+
+.process-tag{
+  color:#ff2b2b;
+  letter-spacing:2px;
+  font-size:13px;
+}
+
+.process-header h2{
+  font-size:52px;
+  margin:15px 0;
+  font-family:serif;
+}
+
+.process-header h2 span{
+  color:#ff2b2b;
+}
+
+.process-header p{
+  color:#8fa1b5;
+  font-size:18px;
+}
+
+.process-steps{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:40px;
+  position:relative;
+}
+
+.process-step{
+  text-align:center;
+  position:relative;
+}
+
+.step-icon{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 25px;
+  font-size:28px;
+  color:#ff2b2b;
+  position:relative;
+  background:rgba(255,255,255,.03);
+}
+
+.step-number{
+  position:absolute;
+  top:-10px;
+  right:-10px;
+  background:#ff2b2b;
+  color:#fff;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+}
+
+.process-step h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.process-step p{
+  font-size:15px;
+  color:#8fa1b5;
+  line-height:1.6;
+}
+
+/* Responsive */
+@media(max-width:1100px){
+  .process-steps{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media(max-width:600px){
+  .process-steps{
+    grid-template-columns:1fr;
+  }
+  .process-header h2{
+    font-size:36px;
+  }
+}
+
+
+/* ================= WHY CHOOSE US ================= */
+.why-choose{
+  padding:120px 80px;
+  background:radial-gradient(circle at top right,#1a1f26,#0b0e12);
+  color:#fff;
+}
+
+.why-container{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.why-tag{
+  color:#ff2b2b;
+  letter-spacing:2px;
+  font-size:13px;
+}
+
+.why-left h2{
+  font-size:52px;
+  margin:20px 0;
+  font-family:serif;
+}
+
+.why-left h2 span{
+  color:#d9a15d;
+}
+
+.why-desc{
+  color:#8fa1b5;
+  font-size:18px;
+  margin-bottom:30px;
+  line-height:1.7;
+}
+
+.why-list{
+  list-style:none;
+  padding:0;
+}
+
+.why-list li{
+  margin-bottom:14px;
+  padding-left:30px;
+  position:relative;
+  font-size:16px;
+}
+
+.why-list li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:#ff2b2b;
+  font-weight:bold;
+}
+
+/* RIGHT SIDE */
+.why-right{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:50px;
+}
+
+.experience{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.experience h3{
+  font-size:72px;
+  color:#ff2b2b;
+}
+
+.experience p{
+  color:#8fa1b5;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.stat-box{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:30px;
+  text-align:center;
+}
+
+.stat-box h4{
+  font-size:36px;
+  color:#d9a15d;
+}
+
+.stat-box p{
+  color:#8fa1b5;
+}
+
+/* Responsive */
+@media(max-width:1000px){
+  .why-container{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:600px){
+  .why-left h2{
+    font-size:36px;
+  }
+}
+
+
+/* ================= CONTACT / GET IN TOUCH ================= */
+.contact{
+  padding:120px 80px;
+  background:radial-gradient(circle at top left,#1b1f26,#0b0e12);
+  color:#fff;
+}
+
+.contact-wrapper{
+  max-width:1300px;
+  margin:auto;
+}
+
+.contact-header{
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.contact-tag{
+  color:#ff2b2b;
+  letter-spacing:2px;
+  font-size:13px;
+}
+
+.contact-header h2{
+  font-size:52px;
+  font-family:serif;
+  margin:20px 0;
+}
+
+.contact-header h2 span{
+  color:#ff2b2b;
+}
+
+.contact-header .highlight{
+  color:#ff2b2b;
+}
+
+.contact-header p{
+  color:#8fa1b5;
+  font-size:18px;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:70px;
+}
+
+/* LEFT */
+.contact-info h3{
+  font-size:26px;
+  margin-bottom:15px;
+}
+
+.contact-info p{
+  color:#8fa1b5;
+  margin-bottom:30px;
+}
+
+.info-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:20px;
+}
+
+.info-card span{
+  color:#8fa1b5;
+  font-size:14px;
+}
+
+.info-card strong{
+  display:block;
+  margin-top:6px;
+  font-size:16px;
+}
+
+/* FORM */
+.contact-form{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:40px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  margin-bottom:20px;
+}
+
+.form-group label{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea{
+  background:#0e1218;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;
+  padding:14px;
+  color:#fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+  color:#6b7280;
+}
+
+.send-btn{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:#e02626;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.send-btn:hover{
+  background:#ff2b2b;
+}
+
+/* Responsive */
+@media(max-width:1000px){
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .contact-header h2{
+    font-size:36px;
+  }
+  .form-row{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+.mobile-menu-btn {
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:#fff;
+  background:rgba(255,255,255,.1);
+  padding:8px 14px;
+  border-radius:8px;
+}
+
+@media(max-width:900px){
+  .mobile-menu-btn{
+    display:block;
+  }
+}
+
+/* SIDEBAR */
+.sidebar{
+  position:fixed;
+  left:-260px;
+  top:0;
+  width:260px;
+  height:100%;
+  background:linear-gradient(180deg,#1a1f2b,#0b0f14);
+  padding:80px 25px;
+  transition:.35s ease;
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+
+.sidebar.show{
+  left:0;
+}
+
+.sidebar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+
+.sidebar-cta{
+  margin-top:auto;
+  background:#e53935;
+  text-align:center;
+  padding:14px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+.close-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:28px;
+  cursor:pointer;
+  color:#fff;
+}
+
+
+
+/* ================= GLOBAL MOBILE RESPONSIVE FIX ================= */
+
+@media (max-width:768px){
+
+  /* Global paddings */
+  section,
+  .about,
+  .services,
+  .industries,
+  .news-platforms,
+  .process-section,
+  .why-choose,
+  .contact {
+    padding:60px 20px;
+  }
+
+  /* Fix navbar */
+  .navbar {
+    padding:16px 20px;
+  }
+
+  /* Hero text */
+  h1{
+    font-size:34px;
+    line-height:1.2;
+  }
+  .subtitle{
+    font-size:16px;
+  }
+
+  /* About section */
+  .about{
+    grid-template-columns:1fr;
+  }
+  .features,
+  .vm{
+    grid-template-columns:1fr;
+  }
+
+  /* Platform cards */
+  .platform-grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Services cards */
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Industries grid */
+  .industries-grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Process section */
+  .process-steps{
+    grid-template-columns:1fr !important;
+  }
+
+  /* Why choose us */
+  .why-container{
+    grid-template-columns:1fr;
+  }
+
+  /* Contact */
+  .contact-header h2{
+    font-size:36px;
+  }
+
+}
+
+/* Extra small devices (phones ≤ 480px) */
+@media (max-width:480px){
+  h1{
+    font-size:28px;
+  }
+  .btn,
+  .actions a{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+}
+
+.footer-logo{
+  width:45px;
+  height:45px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+}
+
+.footer-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <div class="logo-icon">
+  <img src="WhatsApp Image 2026-02-05 at 3.47.34 PM.jpeg" alt="Dhaatri Logo">
+</div>
+
+    <div class="logo-text">
+      <strong>Dhaatri</strong>
+      <span>Media Broadcast</span>
+    </div>
+  </div>
+
+  <div class="mobile-menu-btn" id="menuBtn">
+    ☰
+</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#platforms">News Platforms</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <a href="#" class="cta">Get in Touch</a>
+</nav>
+
+
+<!-- MOBILE SIDEBAR -->
+<div class="sidebar" id="sidebar">
+    <div class="close-btn" id="closeSidebar">×</div>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#platforms">News Platforms</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+
+    <a href="#" class="sidebar-cta">Get in Touch</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+
+    <div class="badge">
+      <span></span>
+      5+ Years in Media Broadcasting
+    </div>
+
+    <h1>
+      Powering Journalism. <span class="red">Shaping Opinion.</span><br>
+      Accelerating Growth.
+    </h1>
+
+    <p class="subtitle">
+      A next-generation media and digital communications company delivering credible
+      news, impactful narratives, and measurable digital growth across India.
+    </p>
+
+    <div class="actions">
+      <a href="#platforms" class="btn btn-primary">Explore Our Platforms →</a>
+      <a href="#services" class="btn btn-secondary">▶ Our Services</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <h2>5+</h2>
+        <p>Years in Media</p>
+      </div>
+      <div class="stat">
+        <h2>10+</h2>
+        <p>Years Digital Excellence</p>
+      </div>
+      <div class="stat">
+        <h2>3</h2>
+        <p>News Platforms</p>
+      </div>
+      <div class="stat">
+        <h2>100+</h2>
+        <p>Clients Served</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ABOUT US -->
+<section class="about" id="about">
+
+  <!-- LEFT CONTENT -->
+  <div class="reveal">
+    <small>ABOUT US</small>
+
+    <h2>
+      Building India's Most Trusted<br>
+      <span>Media Network</span>
+    </h2>
+
+    <p>
+      Founded with the vision of building a trustworthy and future-ready media
+      organization, Dhaatri Media Broadcast Private Limited has grown into a multi-
+      vertical media house combining journalism, public relations, and digital
+      marketing under one roof.
+    </p>
+
+    <p>
+      Our team consists of experienced journalists, editors, digital strategists,
+      content creators, designers, and media planners who understand both ground
+      realities and digital-first audiences. We believe that strong stories, when
+      told responsibly and strategically, have the power to create awareness,
+      influence decisions, and drive growth.
+    </p>
+
+    <div class="vm">
+      <div class="card">
+        <h4>Our Vision</h4>
+        <p>
+          To become one of India's most trusted regional-to-digital media networks,
+          known for journalistic credibility and digital innovation.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Our Mission</h4>
+        <p>
+          To deliver fact-based news, empower brands through effective communication,
+          and integrate media with digital marketing seamlessly.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT FEATURES -->
+  <div class="features">
+    <div class="card reveal">
+      <div class="icon">🌐</div>
+      <h4>Regional Roots, Digital Scale</h4>
+      <p>
+        Strong regional presence with the ability to scale digitally across markets.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <div class="icon">🛡️</div>
+      <h4>Editorial Integrity</h4>
+      <p>
+        Commitment to ethical journalism and unbiased reporting.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <div class="icon">📈</div>
+      <h4>Data-Driven Strategies</h4>
+      <p>
+        Digital marketing powered by analytics and measurable results.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <div class="icon">👥</div>
+      <h4>Deep Media Network</h4>
+      <p>
+        Extensive connections across media, PR, and digital channels.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <div class="icon">🎯</div>
+      <h4>Customized Solutions</h4>
+      <p>
+        Tailored approaches instead of one-size-fits-all packages.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <div class="icon">⚡</div>
+      <h4>Innovation First</h4>
+      <p>
+        Adopting latest technology in storytelling and communication.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- OUR NEWS PLATFORMS -->
+<section class="news-platforms" id="platforms">
+
+  <small>OUR NEWS PLATFORMS</small>
+
+  <h2>Multi-Platform News Network</h2>
+
+  <p class="intro">
+    We operate multiple news platforms with growing readership and viewership,
+    each serving a unique audience with specialized content.
+  </p>
+
+  <div class="platform-grid">
+
+    <!-- Telangana News Time -->
+    <div class="platform-card reveal">
+      <div class="platform-icon">📰</div>
+
+      <h3>Telangana News Time</h3>
+      <div class="platform-tag">Regional News with Depth & Responsibility</div>
+
+      <p>
+        A dedicated regional news platform committed to covering Telangana with
+        depth, accuracy, and responsibility. Focuses on people-centric journalism
+        and developmental narratives.
+      </p>
+
+      <ul>
+        <li>State and district-level politics</li>
+        <li>Government schemes and policies</li>
+        <li>Agriculture, education & employment</li>
+        <li>Strong local reporting network</li>
+      </ul>
+
+      <a href="#" class="learn-more">Learn More <span>↗</span></a>
+    </div>
+
+    <!-- MediaBuzz365 -->
+    <div class="platform-card reveal">
+      <div class="platform-icon">⚡</div>
+
+      <h3>MediaBuzz365</h3>
+      <div class="platform-tag">24/7 Digital News & Infotainment</div>
+
+      <p>
+        A 24/7 digital news and infotainment platform designed for modern,
+        mobile-first audiences. Delivers fast, engaging, and shareable content
+        across categories.
+      </p>
+
+      <ul>
+        <li>Breaking and trending news</li>
+        <li>Entertainment & lifestyle</li>
+        <li>Video-first content strategy</li>
+        <li>High engagement focus</li>
+      </ul>
+
+      <a href="#" class="learn-more">Learn More <span>↗</span></a>
+    </div>
+
+    <!-- News Dharbaar -->
+    <div class="platform-card reveal">
+      <div class="platform-icon">💬</div>
+
+      <h3>News Dharbaar</h3>
+      <div class="platform-tag">Platform for Dialogue & Democracy</div>
+
+      <p>
+        A platform for dialogue, debate, and democratic expression. Brings forward
+        opinions, voices, and stories that often go unheard, encouraging informed
+        public discourse.
+      </p>
+
+      <ul>
+        <li>Political debates & discussions</li>
+        <li>Editorials & opinion columns</li>
+        <li>Grassroots citizen journalism</li>
+        <li>Special investigations</li>
+      </ul>
+
+      <a href="#" class="learn-more">Learn More <span>↗</span></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUR SERVICES -->
+<section class="services" id="services">
+
+  <small>OUR SERVICES</small>
+
+  <h2>End-to-End Communication <span>Solutions</span></h2>
+
+  <p class="intro">
+    From PR and media outreach to digital marketing and political campaigns,
+    we offer comprehensive solutions tailored to your needs.
+  </p>
+
+  <div class="services-grid">
+
+    <!-- PR & Media Relations -->
+    <div class="service-card reveal">
+      <div class="service-icon">📣</div>
+      <h3>PR & Media Relations</h3>
+      <p>
+        Shape narratives, manage reputation, and gain meaningful media visibility
+        with our PR expertise.
+      </p>
+      <ul>
+        <li>Press release drafting & distribution</li>
+        <li>Media pitching & journalist coordination</li>
+        <li>Brand & corporate reputation management</li>
+        <li>Political PR & leader profiling</li>
+        <li>Crisis communication & damage control</li>
+      </ul>
+    </div>
+
+    <!-- Digital Marketing -->
+    <div class="service-card reveal">
+      <div class="service-icon">📊</div>
+      <h3>Digital Marketing</h3>
+      <p>
+        10+ years of digital media expertise delivering integrated solutions
+        for growth and engagement.
+      </p>
+      <ul>
+        <li>Performance marketing & paid campaigns</li>
+        <li>SEO & content optimization</li>
+        <li>Video production & short-form content</li>
+        <li>Online reputation management (ORM)</li>
+      </ul>
+    </div>
+
+    <!-- Political Communication -->
+    <div class="service-card reveal">
+      <div class="service-icon">👥</div>
+      <h3>Political Communication</h3>
+      <p>
+        Specialized in election campaigns and public image management with
+        media strength and digital precision.
+      </p>
+      <ul>
+        <li>Political branding & positioning</li>
+        <li>Digital war rooms</li>
+        <li>Social media narrative building</li>
+        <li>Video campaigns & speeches</li>
+        <li>Constituency-level communication</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- MORE SERVICES -->
+  <div class="more-services reveal">
+    <div>
+      <h4>More Specialized Services</h4>
+      <p>We also offer additional services tailored to your specific needs</p>
+    </div>
+
+    <div class="tags">
+      <div class="tag"><span>📍</span> Press Conferences</div>
+      <div class="tag"><span>✍️</span> Content Creation</div>
+      <div class="tag"><span>📢</span> Influencer Marketing</div>
+      <div class="tag"><span>🎥</span> Video Production</div>
+      <div class="tag"><span>🛡️</span> Reputation Management</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="services-cta reveal">
+    <a href="#">Discuss Your Project →</a>
+  </div>
+
+</section>
+
+
+<!-- INDUSTRIES WE SERVE -->
+<section class="industries">
+
+  <small>INDUSTRIES WE SERVE</small>
+
+  <h2>Trusted Across <span>Diverse Sectors</span></h2>
+
+  <p class="subtitle">
+    From political leaders to startups, we deliver customized communication
+    solutions for every industry.
+  </p>
+
+  <div class="industries-grid">
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">👤</div>
+      <h4>Political Leaders</h4>
+      <p>Public representatives & officials</p>
+    </div>
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">🏢</div>
+      <h4>Corporates & MSMEs</h4>
+      <p>Business & enterprise solutions</p>
+    </div>
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">🚀</div>
+      <h4>Startups</h4>
+      <p>Entrepreneurs & innovators</p>
+    </div>
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">🎓</div>
+      <h4>Education</h4>
+      <p>Educational institutions</p>
+    </div>
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">❤️</div>
+      <h4>Healthcare</h4>
+      <p>Medical & wellness sector</p>
+    </div>
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">🏠</div>
+      <h4>Real Estate</h4>
+      <p>Property & construction</p>
+    </div>
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">🎬</div>
+      <h4>Entertainment</h4>
+      <p>Lifestyle & media brands</p>
+    </div>
+
+    <div class="industry-card reveal">
+      <div class="industry-icon">👥</div>
+      <h4>NGOs</h4>
+      <p>Social organizations</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="process-section">
+  <div class="process-header">
+    <span class="process-tag">OUR PROCESS</span>
+    <h2>How We <span>Work</span></h2>
+    <p>A systematic approach to deliver measurable results for every project.</p>
+  </div>
+
+  <div class="process-steps">
+
+    <div class="process-step">
+      <div class="step-icon">
+        🔍
+        <span class="step-number">01</span>
+      </div>
+      <h3>Research & Understanding</h3>
+      <p>Deep dive into your brand, goals, and target audience.</p>
+    </div>
+
+    <div class="process-step">
+      <div class="step-icon">
+        🎯
+        <span class="step-number">02</span>
+      </div>
+      <h3>Strategy & Planning</h3>
+      <p>Crafting tailored strategies aligned with your objectives.</p>
+    </div>
+
+    <div class="process-step">
+      <div class="step-icon">
+        🚀
+        <span class="step-number">03</span>
+      </div>
+      <h3>Content & Execution</h3>
+      <p>Creating compelling content and executing campaigns.</p>
+    </div>
+
+    <div class="process-step">
+      <div class="step-icon">
+        🔗
+        <span class="step-number">04</span>
+      </div>
+      <h3>Distribution & Promotion</h3>
+      <p>Multi-channel distribution for maximum reach.</p>
+    </div>
+
+    <div class="process-step">
+      <div class="step-icon">
+        📈
+        <span class="step-number">05</span>
+      </div>
+      <h3>Monitoring & Optimization</h3>
+      <p>Continuous tracking and performance improvement.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="why-choose">
+  <div class="why-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="why-left">
+      <span class="why-tag">WHY CHOOSE US</span>
+      <h2>
+        Your Trusted Partner in <br>
+        <span>Media & Communication</span>
+      </h2>
+
+      <p class="why-desc">
+        With years of experience in media broadcasting and digital marketing, we bring
+        the expertise, network, and innovation needed to amplify your voice and
+        achieve your goals.
+      </p>
+
+      <ul class="why-list">
+        <li>Multi-brand owned media platforms</li>
+        <li>Strong editorial and digital backbone</li>
+        <li>5+ years of media broadcasting experience</li>
+        <li>10+ years of digital marketing leadership</li>
+        <li>Deep regional understanding</li>
+        <li>Transparent reporting and ethical PR</li>
+        <li>End-to-end communication solutions</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT STATS CARD -->
+    <div class="why-right">
+      <div class="experience">
+        <h3>15+</h3>
+        <p>Years of Combined Experience</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <h4>3</h4>
+          <p>News Platforms</p>
+        </div>
+        <div class="stat-box">
+          <h4>100+</h4>
+          <p>Clients Served</p>
+        </div>
+        <div class="stat-box">
+          <h4>500+</h4>
+          <p>Campaigns Delivered</p>
+        </div>
+        <div class="stat-box">
+          <h4>8+</h4>
+          <p>Industries</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="contact" id="contact">
+  <div class="contact-wrapper">
+
+    <div class="contact-header">
+      <span class="contact-tag">GET IN TOUCH</span>
+      <h2>
+        Partner With Us to <span>Inform, Influence</span><br>
+        <span class="highlight">& Grow</span>
+      </h2>
+      <p>
+        Ready to amplify your brand? Let's discuss how we can help you achieve your goals.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- LEFT INFO -->
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>
+          Dhaatri Media Broadcast Private Limited is here to help you with all
+          your media, PR, and digital marketing needs.
+        </p>
+
+        <div class="info-card">
+          <span>Email</span>
+          <strong>info@dhaatrimedia.com</strong>
+        </div>
+
+        <div class="info-card">
+          <span>Phone</span>
+          <strong>+91 95537 70077</strong>
+        </div>
+
+        <div class="info-card">
+          <span>News Brands</span>
+          <strong>
+            Telangana News Time · MediaBuzz365 · News Dharbaar
+          </strong>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM -->
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@example.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" placeholder="+91 98765 43210">
+          </div>
+          <div class="form-group">
+            <label>Service Interested In</label>
+            <input type="text" placeholder="Digital Marketing / PR / Media">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea rows="5" placeholder="Tell us about your project or requirements..."></textarea>
+        </div>
+
+        <button type="submit" class="send-btn">
+          Send Message →
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER SECTION ================= -->
+<footer id="footerSection" style="background:#1e1f25; padding:60px 0; color:#d1d1d1; font-family: 'Poppins', sans-serif;">
+    <div class="footer-container" style="width:90%; max-width:1400px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between;">
+
+        <!-- Left Section -->
+        <div class="footer-col" style="flex:1; min-width:260px; margin-bottom:40px;">
+            <div style="display:flex; align-items:center; margin-bottom:15px;">
+                <div class="footer-logo" style="width:45px; height:45px; background:#d62d2d; border-radius:10px; display:flex; justify-content:center; align-items:center; font-size:24px; color:white; font-weight:700;">
+                    D
+                </div>
+                <div style="margin-left:12px;">
+                    <h2 style="margin:0; font-size:20px; color:white;">Dhaatri</h2>
+                    <p style="margin:0; font-size:13px; color:#c8c8c8;">Media Broadcast</p>
+                </div>
+            </div>
+
+            <p style="max-width:380px; line-height:1.7; font-size:14px;">
+                A next-generation media and digital communications company delivering credible news, impactful narratives,
+                and measurable digital growth.
+            </p>
+
+            <p style="margin-top:20px; line-height:1.8; font-size:14px;">
+                5+ Years in Media Broadcasting <br>
+                10+ Years in Digital Media Excellence
+            </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col" style="flex:1; min-width:200px; margin-bottom:40px;">
+            <h3 style="color:#ffffff; font-size:18px; margin-bottom:15px;">Quick Links</h3>
+            <ul style="list-style:none; padding:0; line-height:2;">
+                <li><a href="#" style="color:#d1d1d1; text-decoration:none;">Home</a></li>
+                <li><a href="#" style="color:#d1d1d1; text-decoration:none;">About Us</a></li>
+                <li><a href="#" style="color:#d1d1d1; text-decoration:none;">News Platforms</a></li>
+                <li><a href="#" style="color:#d1d1d1; text-decoration:none;">Services</a></li>
+                <li><a href="#" style="color:#d1d1d1; text-decoration:none;">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col" style="flex:1; min-width:220px; margin-bottom:40px;">
+            <h3 style="color:#ffffff; font-size:18px; margin-bottom:15px;">Services</h3>
+            <ul style="list-style:none; padding:0; line-height:2;">
+                <li style="color:#d1d1d1;">PR & Media Relations</li>
+                <li style="color:#d1d1d1;">Digital Marketing</li>
+                <li style="color:#d1d1d1;">Political Communication</li>
+                <li style="color:#d1d1d1;">Content Creation</li>
+                <li style="color:#d1d1d1;">Reputation Management</li>
+            </ul>
+        </div>
+
+        <!-- Our Platforms -->
+        <div class="footer-col" style="flex:1; min-width:220px; margin-bottom:40px;">
+            <h3 style="color:#ffffff; font-size:18px; margin-bottom:15px;">Our Platforms</h3>
+
+            <ul style="list-style:none; padding:0; line-height:2;">
+                <li class="footer-platform" style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="color:#e13f3f; font-size:18px;">📰</span>
+                    <span style="color:#d1d1d1;">Telangana News Time</span>
+                </li>
+
+                <li class="footer-platform" style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                    <span style="color:#e5b000; font-size:18px;">⚡</span>
+                    <span style="color:#d1d1d1;">MediaBuzz365</span>
+                </li>
+
+                <li class="footer-platform" style="display:flex; align-items:center; gap:10px;">
+                    <span style="color:#d62d2d; font-size:18px;">💬</span>
+                    <span style="color:#d1d1d1;">News Dharbaar</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <hr style="border:0; height:1px; background:#3a3a3a; width:90%; margin:30px auto;">
+
+    <div id="footerBottom" style="width:90%; max-width:1400px; margin:auto; display:flex; justify-content:space-between; flex-wrap:wrap; color:#c5c5c5; font-size:14px;">
+        <p>© 2026 Dhaatri Media Broadcast Private Limited. All rights reserved.</p>
+        <p>Made with ❤️ for better journalism</p>
+    </div>
+</footer>
+
+
+<script>
+// subtle parallax on mouse move
+document.addEventListener("mousemove", e=>{
+  const x = (window.innerWidth/2 - e.clientX)/40;
+  const y = (window.innerHeight/2 - e.clientY)/40;
+  document.querySelector(".hero-content").style.transform =
+    `translate(${x}px,${y}px)`;
+});
+</script>
+
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add("show");
+    }
+  });
+});
+</script>
+
+<script>
+  const steps = document.querySelectorAll('.process-step');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.transform='translateY(0)';
+        entry.target.style.opacity='1';
+      }
+    });
+  },{threshold:0.2});
+
+  steps.forEach(step=>{
+    step.style.opacity='0';
+    step.style.transform='translateY(30px)';
+    step.style.transition='0.6s ease';
+    observer.observe(step);
+  });
+</script>
+
+
+<script>
+  const whyItems = document.querySelectorAll('.why-left, .why-right');
+  const whyObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  },{threshold:0.2});
+
+  whyItems.forEach(item=>{
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(40px)';
+    item.style.transition = '0.8s ease';
+    whyObserver.observe(item);
+  });
+</script>
+
+<script>
+  const contactItems = document.querySelectorAll('.contact-header, .contact-info, .contact-form');
+  const contactObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  },{threshold:0.2});
+
+  contactItems.forEach(item=>{
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(40px)';
+    item.style.transition = '0.8s ease';
+    contactObserver.observe(item);
+  });
+</script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate footer columns
+gsap.from(".footer-col", {
+    scrollTrigger: {
+        trigger: "#footerSection",
+        start: "top 80%",
+    },
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    stagger: 0.25,
+    ease: "power3.out"
+});
+
+// Icons pop animation
+gsap.from(".footer-platform", {
+    scrollTrigger: {
+        trigger: "#footerSection",
+        start: "top 75%",
+    },
+    opacity: 0,
+    scale: 0.6,
+    duration: 0.6,
+    stagger: 0.2,
+    ease: "back.out(1.7)"
+});
+
+// Bottom bar fade-in
+gsap.from("#footerBottom", {
+    scrollTrigger: {
+        trigger: "#footerSection",
+        start: "top 65%",
+    },
+    opacity: 0,
+    y: 20,
+    duration: 1.2,
+    ease: "power2.out"
+});
+</script>
+
+<script>
+const sidebar = document.getElementById("sidebar");
+const menuBtn = document.getElementById("menuBtn");
+const closeSidebar = document.getElementById("closeSidebar");
+
+menuBtn.addEventListener("click", () => {
+    sidebar.classList.add("show");
+});
+
+closeSidebar.addEventListener("click", () => {
+    sidebar.classList.remove("show");
+});
+</script>
+
+
+</body>
+</html>
